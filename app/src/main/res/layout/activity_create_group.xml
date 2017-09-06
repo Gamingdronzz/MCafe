@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v4.widget.NestedScrollView
+
+        android:id="@+id/ScrollViewCreateGroupLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.mcafeweb.CreateGroup">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <com.wrapp.floatlabelededittext.FloatLabeledEditText
+                android:id="@+id/create_Group_Group_Name"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="30dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter Group Name" />
+            </com.wrapp.floatlabelededittext.FloatLabeledEditText>
+
+
+
+            <com.wrapp.floatlabelededittext.FloatLabeledEditText
+                android:id="@+id/groupDescription"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="30dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter Group Description" />
+            </com.wrapp.floatlabelededittext.FloatLabeledEditText>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:gravity="center"
+                android:text="Group Category"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/spinner_Group_Category"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:gravity="center"
+                android:text="Group Privacy"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/spinner_Group_Privacy"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp" />
+
+            <Button
+                android:id="@+id/chooseImageButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/colorWhite"
+                android:background="@drawable/register_button_background"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="Pick\nImage" />
+
+
+            <Button
+                android:id="@+id/createGroupButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/register_button_background"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="Create Group"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+    <LinearLayout
+        android:id="@+id/progressLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <com.crystal.crystalpreloaders.widgets.CrystalPreloader
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:crs_pl_bg_color="#fff"
+            app:crs_pl_fg_color="@color/colorAccent"
+            app:crs_pl_size="small"
+            app:crs_pl_style="expandable_balls" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Creating Group..\nPlease Wait"
+            android:textColor="@color/colorBlack"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
+
+
+</FrameLayout>

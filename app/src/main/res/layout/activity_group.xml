@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".GroupActivity">
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:id="@+id/comment"
+        android:layout_alignParentBottom="true">
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/sendMessageFromGroup"
+            android:background="@null"
+            android:layout_margin="10dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/send"/>
+
+        <com.wrapp.floatlabelededittext.FloatLabeledEditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toLeftOf="@+id/sendMessageFromGroup"
+            android:id="@+id/group_comment_editText">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="3"
+                android:hint="Initiate Discussion or Comment"/>
+        </com.wrapp.floatlabelededittext.FloatLabeledEditText>
+
+
+
+    </RelativeLayout>
+
+
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view_group_activity"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="2dp"
+        android:scrollbars="vertical"
+        android:layout_above="@+id/comment"/>
+
+    <include layout="@layout/floating_action_menu_group_activity"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/comment"/>
+
+
+</RelativeLayout>

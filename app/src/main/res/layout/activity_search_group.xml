@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.mcafeweb.SearchGroup">
+
+    <include layout="@layout/crystal_progress_bar"
+        android:id="@+id/crystal_progress_bar_search_group"
+        android:visibility="invisible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        >
+
+    </include>
+
+    <RelativeLayout
+        android:id="@+id/searchbar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_gravity="top"
+        android:layout_margin="5dp">
+
+        <com.wrapp.floatlabelededittext.FloatLabeledEditText
+            android:id="@+id/EditText_Search_Group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/buttonSearchGroup">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Enter text to search" />
+        </com.wrapp.floatlabelededittext.FloatLabeledEditText>
+
+        <com.mcafeweb.SquareImageView
+            android:id="@+id/buttonSearchGroup"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/search" />
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view_search_group"
+        android:layout_above="@+id/crystal_progress_bar_search_group"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/searchbar">
+
+    </android.support.v7.widget.RecyclerView>
+
+</RelativeLayout>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/id_add_to_fav_list" android:title="Add to Fav List"></item>
+    <item android:id="@+id/view_contributor" android:title="View Contributor Profile"></item>
+    <item android:id="@+id/follow_contributor" android:title="Follow Contributor"></item>
+</menu>

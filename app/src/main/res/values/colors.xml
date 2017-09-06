@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorAccent">#ffb400</color>
+    <color name="colorAccentDark">#d19b19</color>
+    <color name="colorAccentLight">#FFE0B2</color>
+    <color name="colorPrimary">#c30004</color>
+    <color name="colorPrimaryDark">#970206</color>
+    <color name="colorPrimaryLight">#f54d50</color>
+    <color name="colorPrimaryText">#212121</color>
+    <color name="colorSecondaryText">#757575</color>
+    <color name="colorDivider">#BDBDBD</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorOffWhite">#eeeeee</color>
+    <color name="colorRed">#ff0000</color>
+    <color name="colorFacebook">#3760ac</color>
+    <color name="colorGray">#6c6c6c</color>
+    <color name="colorLightGray">#dcdcdc</color>
+    <color name="colorBlack">#000000</color>
+    <color name="logotext">#e46900</color>
+    <color name="chocolateBrown">#c30004</color>
+    <color name="icons">#212121</color>
+</resources>
+
+
+<!--
+
+<color name="colorPrimary">#ffb400</color>
+    <color name="colorPrimaryDark">#d19b19</color>
+    <color name="colorPrimaryLight">#FFE0B2</color>
+    <color name="colorAccent">#c30004</color>
+    <color name="colorAccentDark">#970206</color>
+    <color name="colorAccentLight">#f54d50</color>
+     <color name="colorPrimaryText">#212121</color>
+    <color name="colorSecondaryText">#757575</color>
+
+-->

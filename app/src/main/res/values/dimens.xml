@@ -1,0 +1,24 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="tab_max_width">264dp</dimen>
+    <dimen name="tab_padding_bottom">16dp</dimen>
+    <dimen name="tab_label">14sp</dimen>
+    <dimen name="custom_tab_layout_height">72dp</dimen>
+    <dimen name="tab_height">3dp</dimen>
+
+    <dimen name="padding_min">4dp</dimen>
+    <dimen name="padding_small">8dp</dimen>
+    <dimen name="padding_medium">16dp</dimen>
+    <dimen name="padding_large">32dp</dimen>
+    <dimen name="padding_xlarge">64dp</dimen>
+    <dimen name="fab_size_min">35dp</dimen>
+    <dimen name="corner_radius_large">16dp</dimen>
+    <dimen name="corner_radius_xlarge">32dp</dimen>
+    <dimen name="corner_radius_xxlarge">48dp</dimen>
+    <dimen name="corner_radius_xxxlarge">96dp</dimen>
+    <dimen name="corner_radius_xxxxlarge">128dp</dimen>
+    <dimen name="blog_title_size">16sp</dimen>
+</resources>

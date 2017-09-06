@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <include layout="@layout/crystal_progress_bar"
+        android:id="@+id/crystal_progress_bar_tab_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        >
+    </include>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view_group_tab"
+        android:layout_above="@+id/crystal_progress_bar_tab_group"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="2dp"
+        android:scrollbars="vertical" />
+
+    <include layout="@layout/floating_action_menu_groups"></include>
+
+
+</RelativeLayout>

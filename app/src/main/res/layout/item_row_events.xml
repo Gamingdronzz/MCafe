@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="130dp"
+    android:layout_margin="10dp"
+    android:clickable="true"
+    android:background="@drawable/tab_group_row_background"
+    android:orientation="horizontal"
+    android:weightSum="100">
+
+    <com.gamingdronzz.com.mcafe.SquareImageView
+        android:id="@+id/imageViewEvent"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_margin="2dp"
+        android:layout_weight="32"
+        android:background="@drawable/frame" />
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="68">
+
+        <TextView
+            android:id="@+id/text_view_event_title"
+            android:layout_width="match_parent"
+            android:layout_height="33dp"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:padding="5dp"
+            tools:text="event_title" />
+
+        <TextView
+            android:id="@+id/text_view_event_description"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_below="@+id/text_view_event_title"
+            android:gravity="center"
+            android:padding="5dp"
+            tools:text="event_description" />
+
+        <TextView
+            android:id="@+id/text_view_event_members"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:layout_below="@+id/text_view_event_description"
+            android:gravity="center"
+            android:textStyle="bold"
+            tools:text="event_content" />
+
+    </RelativeLayout>
+
+</LinearLayout>

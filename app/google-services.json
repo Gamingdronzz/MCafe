@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "750021310152",
+    "firebase_url": "https://mcafe-169213.firebaseio.com",
+    "project_id": "mcafe-169213",
+    "storage_bucket": "mcafe-169213.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:750021310152:android:1d32a5d0f2881e15",
+        "android_client_info": {
+          "package_name": "com.mcafeweb"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "750021310152-fb13f2qg01ls6bb2ccpogtnvtfbls2qv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mcafeweb",
+            "certificate_hash": "9a71108437543b61811f7274307dd7d2ea03e40f"
+          }
+        },
+        {
+          "client_id": "750021310152-0hobi6ql6r0e9s5nqde15ieubnkfvd30.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAeZ1nPyRCkmxCOC2_P2aq4b8viGUA7H3o"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "750021310152-0hobi6ql6r0e9s5nqde15ieubnkfvd30.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

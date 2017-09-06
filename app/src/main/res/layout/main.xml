@@ -1,0 +1,119 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:id="@+id/LinearCreateBlogLayout"
+        android:padding="20dp"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_view_blog_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textStyle="bold" />
+
+            <android.support.v4.widget.Space
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/padding_large" />
+
+
+            <com.wrapp.floatlabelededittext.FloatLabeledEditText
+                android:id="@+id/create_Blog_Link"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="30dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter Blog Link" />
+            </com.wrapp.floatlabelededittext.FloatLabeledEditText>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:gravity="center"
+                android:text="Blog Category"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/spinner_Blog_Category"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp" />
+
+            <Button
+                android:id="@+id/generate_preview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/login_button_background"
+                android:paddingLeft="@dimen/padding_large"
+                android:paddingRight="@dimen/padding_large"
+                android:text="Preview"
+                android:textColor="@android:color/white" />
+
+            <Button
+                android:id="@+id/curate_blog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/login_button_background"
+                android:text="CURATE BLOG"
+                android:textColor="@android:color/white" />
+
+            <LinearLayout
+                android:id="@+id/drop_preview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"></LinearLayout>
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+
+    <LinearLayout
+        android:id="@+id/progressLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <com.crystal.crystalpreloaders.widgets.CrystalPreloader
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:crs_pl_bg_color="#fff"
+            app:crs_pl_fg_color="@color/colorAccent"
+            app:crs_pl_size="small"
+            app:crs_pl_style="expandable_balls" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Creating Blog..\nPlease Wait"
+            android:textColor="@color/colorBlack"
+            android:textStyle="bold" />
+    </LinearLayout>
+</FrameLayout>

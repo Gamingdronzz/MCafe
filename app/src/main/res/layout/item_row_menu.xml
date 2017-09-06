@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/TextView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#00ff0000"
+    android:checkMark="@drawable/check_mark"
+    android:checked="false"
+    android:gravity="center"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:text="Hello"/>

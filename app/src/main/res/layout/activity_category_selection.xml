@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinator_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorLightGray"
+    tools:context=".InterestSelection">
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view_categories"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:padding="5dp"
+        android:scrollbars="vertical" />
+
+    <LinearLayout
+        android:id="@+id/progressLayoutInterests"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <com.crystal.crystalpreloaders.widgets.CrystalPreloader
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:crs_pl_bg_color="#fff"
+            app:crs_pl_fg_color="@color/colorAccent"
+            app:crs_pl_size="small"
+            app:crs_pl_style="expandable_balls" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:id="@+id/progress_text_interests"
+            android:text="Submitting Your Preferences..."
+            android:textColor="@color/colorBlack"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
+
+
+</android.support.design.widget.CoordinatorLayout>
