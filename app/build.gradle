@@ -3,18 +3,11 @@ apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.0"
+    buildToolsVersion "25.0.2"
 
 
     signingConfigs {
         config {
-        }
-        mcafe {
-            keyAlias 'mcafe'
-            keyPassword 'nidhityagi123'
-            storeFile file('E:/Balpreet/Company/Android/KeyStores/mcafe.jks')
-            storePassword 'nidhityagi123'
-            v2SigningEnabled false
         }
     }
 
@@ -30,11 +23,9 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.mcafe
-        }
+           }
         debug {
-            signingConfig signingConfigs.mcafe
-        }
+            }
     }
 }
 

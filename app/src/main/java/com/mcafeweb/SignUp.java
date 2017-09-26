@@ -6,9 +6,9 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Base64;
@@ -27,7 +27,6 @@ import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
-import com.facebook.FacebookSdk;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
 import com.facebook.Profile;
@@ -50,6 +49,7 @@ import org.json.JSONObject;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -91,7 +91,7 @@ public class SignUp extends AppCompatActivity implements VolleyHelper.VolleyResp
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         helper = new Helper(this);
-        volleyHelper = new VolleyHelper(this,this);
+        volleyHelper = new VolleyHelper(this, this);
         setupDatabase();
         inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         EmailID = (EditText) findViewById(R.id.EditText_Email);
@@ -159,11 +159,10 @@ public class SignUp extends AppCompatActivity implements VolleyHelper.VolleyResp
             for (Signature signature : info.signatures) {
                 MessageDigest md = MessageDigest.getInstance("SHA");
                 md.update(signature.toByteArray());
-                Log.v("Key","KeyHash : " + Base64.encodeToString(md.digest(), Base64.DEFAULT));
+                Log.v("Key", "KeyHash : " + Base64.encodeToString(md.digest(), Base64.DEFAULT));
             }
 
-        }catch (PackageManager.NameNotFoundException|NoSuchAlgorithmException nnfe)
-        {
+        } catch (PackageManager.NameNotFoundException | NoSuchAlgorithmException nnfe) {
             nnfe.printStackTrace();
         }
 
@@ -225,18 +224,6 @@ public class SignUp extends AppCompatActivity implements VolleyHelper.VolleyResp
         return;
     }
 
-    private void SetDetails(Profile profile) {
-        Log.d(TAG, "Setting Facebook profile Details");
-        //facebookId = profile.getId();
-
-        dbHelper.setUserFirstName(profile.getFirstName());
-        dbHelper.setUserLastName(profile.getLastName());
-
-        //Profile_Image = profile.getProfilePictureUri(256, 256).toString();
-        setInputFields();
-        showProgressLayout(false);
-    }
-
 
     protected void GetDetailsFromGoogle() {
         InfoText.setText("Connecting via Google\nPlease be patient");
@@ -247,11 +234,10 @@ public class SignUp extends AppCompatActivity implements VolleyHelper.VolleyResp
 
     public void setUpFacebook() {
         InfoText.setText("Connecting via Facebook\nHold on");
-
+        callbackManager = CallbackManager.Factory.create();
         showProgressLayout(true);
         facebookLoginButton = (LoginButton) findViewById(R.id.Facebook_LoginButton);
-        callbackManager = CallbackManager.Factory.create();
-        //Log.d(TAG, "Registering facebook Button Callback");
+        facebookLoginButton.setReadPermissions(Arrays.asList("public_profile", "email", "user_birthday"));
         facebookLoginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             private ProfileTracker mProfileTracker;
 
@@ -265,7 +251,6 @@ public class SignUp extends AppCompatActivity implements VolleyHelper.VolleyResp
                     mProfileTracker = new ProfileTracker() {
                         @Override
                         protected void onCurrentProfileChanged(Profile profile, Profile profile2) {
-                            // profile2 is the new profile
                             Profile.setCurrentProfile(profile2);
                             mProfileTracker.stopTracking();
                             SetDetails(profile2);
@@ -275,19 +260,20 @@ public class SignUp extends AppCompatActivity implements VolleyHelper.VolleyResp
                     Log.d(TAG, "Facebook profile Found");
                     SetDetails(profile);
                 }
+
                 GraphRequest request = GraphRequest.newMeRequest(AccessToken.getCurrentAccessToken(),
                         new GraphRequest.GraphJSONObjectCallback() {
                             @Override
                             public void onCompleted(JSONObject object, GraphResponse response) {
 
                                 try {
-                                    //User.Instance().setEmail(object.getString("email"));
-                                    dbHelper.setUserEmail(object.getString("email"));
+                                    String email = object.optString("email");
+                                    dbHelper.setUserEmail(email);
                                     String profile_name = object.getString("name");
                                     long fb_id = object.getLong("id"); //use this for logout
                                     Log.d(TAG, "First Name : " + dbHelper.getUserFirstName() +
                                             "Last Name : " + dbHelper.getUserLastName());
-                                    EmailID.setText(dbHelper.getUserEmail());
+                                    EmailID.setText(email);
                                 } catch (JSONException e) {
                                     // TODO Auto-generated catch block
                                     e.printStackTrace();
@@ -315,6 +301,26 @@ public class SignUp extends AppCompatActivity implements VolleyHelper.VolleyResp
                 Toast.makeText(SignUp.this, "Facebook Login Error! Please try after some time", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+
+    private void SetDetails(Profile profile) {
+        Log.d(TAG, "Setting Facebook profile Details");
+        //facebookId = profile.getId();
+        dbHelper.setUserFirstName(profile.getFirstName());
+        dbHelper.setUserLastName(profile.getLastName());
+        //Profile_Image = profile.getProfilePictureUri(256, 256).toString();
+        setInputFields();
+        showProgressLayout(false);
+    }
+
+    void setInputFields() {
+
+        EmailID.setText(dbHelper.getUserEmail());
+        FirstName.setText(dbHelper.getUserFirstName());
+        LastName.setText(dbHelper.getUserLastName());
+        Password.setText("");
+        Password.requestFocus();
     }
 
     public void RegisterUser() {
@@ -414,19 +420,9 @@ public class SignUp extends AppCompatActivity implements VolleyHelper.VolleyResp
 
     }
 
-
-    void setInputFields() {
-
-        EmailID.setText(dbHelper.getUserEmail());
-        FirstName.setText(dbHelper.getUserFirstName());
-        LastName.setText(dbHelper.getUserLastName());
-        Password.setText("");
-        Password.requestFocus();
-    }
-
     @Override
     public void onResponse(String result) {
-        Log.d(TAG,result);
+        Log.d(TAG, result);
         JSONObject json = helper.getJson(result);
         try {
             if (json.getString(helper.REGISTER_RESULT).equals(helper.SUCCESS)) {
