@@ -2,12 +2,16 @@ package com.mcafeweb;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -44,6 +48,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -145,6 +151,22 @@ public class SignUp extends AppCompatActivity implements VolleyHelper.VolleyResp
         });
 
         showProgressLayout(false);
+
+        try {
+            PackageInfo info = getPackageManager().getPackageInfo(
+                    "com.bloopit.activities",
+                    PackageManager.GET_SIGNATURES);
+            for (Signature signature : info.signatures) {
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                Log.v("Key","KeyHash : " + Base64.encodeToString(md.digest(), Base64.DEFAULT));
+            }
+
+        }catch (PackageManager.NameNotFoundException|NoSuchAlgorithmException nnfe)
+        {
+            nnfe.printStackTrace();
+        }
+
 
     }
 
