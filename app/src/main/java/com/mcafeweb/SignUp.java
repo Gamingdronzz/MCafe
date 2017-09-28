@@ -154,7 +154,7 @@ public class SignUp extends AppCompatActivity implements VolleyHelper.VolleyResp
 
         try {
             PackageInfo info = getPackageManager().getPackageInfo(
-                    "com.bloopit.activities",
+                    "com.mcafeweb",
                     PackageManager.GET_SIGNATURES);
             for (Signature signature : info.signatures) {
                 MessageDigest md = MessageDigest.getInstance("SHA");

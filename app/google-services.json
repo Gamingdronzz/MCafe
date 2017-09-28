@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "750021310152-g596g2p6c4t0v3vd0nfs4kh80vf7mco5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mcafeweb",
+            "certificate_hash": "0c44a953fc725a6fa350869f0a64352d7eb005b2"
+          }
+        },
+        {
           "client_id": "750021310152-fb13f2qg01ls6bb2ccpogtnvtfbls2qv.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
