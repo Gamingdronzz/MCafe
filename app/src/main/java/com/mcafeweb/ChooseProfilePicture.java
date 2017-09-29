@@ -7,13 +7,15 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Parcelable;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.system.ErrnoException;
+import android.util.Base64;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -34,6 +36,7 @@ public class ChooseProfilePicture extends AppCompatActivity {
     CropImageView myProfilePic;
     private Uri mCropImageUri;
     String finalImage = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +46,6 @@ public class ChooseProfilePicture extends AppCompatActivity {
         getSupportActionBar().setTitle("Crop Photo");
         onLoadImageClick();
     }
-
 
 
     @Override
@@ -60,8 +62,8 @@ public class ChooseProfilePicture extends AppCompatActivity {
             case R.id.done_choose_pic:
                 onCropImageClick();
                 Intent intent = getIntent();
-                intent.putExtra("image",finalImage);
-                setResult(RESULT_OK,intent);
+                intent.putExtra("image", finalImage);
+                setResult(RESULT_OK, intent);
                 finish();
         }
         return super.onOptionsItemSelected(item);
@@ -70,6 +72,21 @@ public class ChooseProfilePicture extends AppCompatActivity {
     public void onCropImageClick() {
         Bitmap cropped = myProfilePic.getCroppedImage();
         if (cropped != null) {
+            byte[] inter = Base64.decode(Helper.Instance.getStringFromBitmap(cropped), Base64.DEFAULT);
+            BitmapFactory.Options o = new BitmapFactory.Options();
+            o.inJustDecodeBounds = true;
+            BitmapFactory.decodeByteArray(inter, 0, inter.length, o);
+            // The new size we want to scale to
+            final int REQUIRED_SIZE = 100;
+            // Find the correct scale value. It should be the power of 2.
+            int scale = 1;
+            while (o.outWidth / scale / 2 >= REQUIRED_SIZE &&
+                    o.outHeight / scale / 2 >= REQUIRED_SIZE) {
+                scale *= 2;
+            }
+            BitmapFactory.Options o2 = new BitmapFactory.Options();
+            o2.inSampleSize = scale;
+            cropped = BitmapFactory.decodeByteArray(inter, 0, inter.length, o2);
             myProfilePic.setImageBitmap(cropped);
             finalImage = Helper.Instance.getStringFromBitmap(cropped);
         }
@@ -102,9 +119,7 @@ public class ChooseProfilePicture extends AppCompatActivity {
                 ImageCompression imageCompression = new ImageCompression(this);
                 myProfilePic.setImageUriAsync(imageUri);
             }
-        }
-        else
-        {
+        } else {
             finish();
         }
     }

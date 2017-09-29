@@ -3,17 +3,10 @@ package com.mcafeweb.utils;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.TypedArray;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Matrix;
-import android.graphics.Paint;
-import android.media.ExifInterface;
 import android.net.Uri;
-import android.os.Environment;
-import android.provider.MediaStore;
 import android.util.Base64;
 import android.util.Log;
 import android.widget.Toast;
@@ -27,10 +20,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.text.ParseException;
@@ -96,8 +85,7 @@ public class Helper {
             };
 
 
-
-    public Map<String,String> NewCategories;
+    public Map<String, String> NewCategories;
 
 
     public final String CREATE_GROUP_RESULT = "create_group_result";
@@ -110,7 +98,7 @@ public class Helper {
 
     public Helper(Context context) {
         Instance = this;
-  //      NewCategories = new HashMap<String, String>();
+        //      NewCategories = new HashMap<String, String>();
         //format = new SimpleDateFormat(exprectedPattern);
         this.context = context;
     }
@@ -128,8 +116,7 @@ public class Helper {
         return result;
     }
 
-    public String getStringNumeric(int number)
-    {
+    public String getStringNumeric(int number) {
         if (number < 1000) {
             return number + "";
         } else if (number < 1000000) {
@@ -142,8 +129,7 @@ public class Helper {
         }
     }
 
-    public void callError(VolleyError error)
-    {
+    public void callError(VolleyError error) {
         if (error.getClass() == TimeoutError.class) {
             Toast.makeText(context.getApplicationContext(), "Connection is slow", Toast.LENGTH_SHORT);
         }
@@ -185,7 +171,7 @@ public class Helper {
 
     public String getParameters(String[] keys, String[] values) {
         StringBuilder data = new StringBuilder();
-        if(keys.length>0) {
+        if (keys.length > 0) {
 
 
             try {
@@ -207,37 +193,31 @@ public class Helper {
     }
 
 
-
-    public String getStringFromList(List list)
-    {
+    public String getStringFromList(List list) {
         StringBuilder result = new StringBuilder();
-        for(int i = 0;i<list.size();i++)
-        {
+        for (int i = 0; i < list.size(); i++) {
             result.append(list.get(i).toString().toLowerCase());
             result.append(",");
         }
-        result.deleteCharAt(result.length()-1);
-        Log.v(TAG,"Final String : " + result.toString());
+        result.deleteCharAt(result.length() - 1);
+        Log.v(TAG, "Final String : " + result.toString());
         return result.toString();
     }
 
-    public List<String> getListFromString(String string)
-    {
+    public List<String> getListFromString(String string) {
         String[] intermediate = string.split(",");
         List<String> result = new ArrayList<String>();
-        for(int i = 0;i<intermediate.length;i++)
-        {
+        for (int i = 0; i < intermediate.length; i++) {
             result.add(intermediate[i].toLowerCase());
         }
-        Log.v(TAG,"List Result : " + result );
+        Log.v(TAG, "List Result : " + result);
         return result;
 
 
     }
 
 
-    public Intent getImageIntent()
-    {
+    public Intent getImageIntent() {
         Intent intent = new Intent();
         // Show only images, no videos or anything else
         intent.setType("image/*");
@@ -246,26 +226,22 @@ public class Helper {
         return intent;
     }
 
-    public String getStringFromBitmap(Bitmap image)
-    {
-        if(image!=null) {
+    public String getStringFromBitmap(Bitmap image) {
+        if (image != null) {
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
             image.compress(Bitmap.CompressFormat.JPEG, 30, byteArrayOutputStream);
             byte[] bytes = byteArrayOutputStream.toByteArray();
-            String result = Base64.encodeToString(bytes,Base64.DEFAULT);
+            String result = Base64.encodeToString(bytes, Base64.DEFAULT);
             return result;
-        }
-        else
-        {
+        } else {
             return null;
         }
     }
 
-    public Bitmap getBitmapFromString(String value)
-    {
-        byte[] inter = Base64.decode(value,Base64.DEFAULT);
-        Log.d(TAG,"Byte Array = " + inter.toString());
-        return BitmapFactory.decodeByteArray(inter,0,inter.length);
+    public Bitmap getBitmapFromString(String value) {
+        byte[] inter = Base64.decode(value, Base64.DEFAULT);
+        Log.d(TAG, "Byte Array = " + inter.toString());
+        return BitmapFactory.decodeByteArray(inter, 0, inter.length);
     }
 
     /*
@@ -278,36 +254,30 @@ public class Helper {
     }
     */
 
-    public Date getDatefromString(String input)
-    {
+    public Date getDatefromString(String input) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date d = null;
         try {
             d = dateFormat.parse(input);
-        }
-        catch (ParseException pe)
-        {
+        } catch (ParseException pe) {
             pe.printStackTrace();
         }
         return d;
     }
 
-    public String getStringFromDate(String input)
-    {
+    public String getStringFromDate(String input) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date d = null;
         try {
             d = dateFormat.parse(input);
-        }
-        catch (ParseException pe)
-        {
+        } catch (ParseException pe) {
             pe.printStackTrace();
         }
 
         Calendar mCalendar = new GregorianCalendar();
         TimeZone mTimeZone = mCalendar.getTimeZone();
         int mGMTOffset = mTimeZone.getRawOffset();
-        Log.d(TAG,"GMT offset is " + TimeUnit.HOURS.convert(mGMTOffset, TimeUnit.MILLISECONDS) + "  hours");
+        Log.d(TAG, "GMT offset is " + TimeUnit.HOURS.convert(mGMTOffset, TimeUnit.MILLISECONDS) + "  hours");
 
         //SimpleDateFormat dest = new SimpleDateFormat("dd-MM-yy hh:mm a", Locale.ENGLISH);
         SimpleDateFormat dest = new SimpleDateFormat("dd MMM yyyy", Locale.ENGLISH);
@@ -317,25 +287,22 @@ public class Helper {
     }
 
 
-    public String getFirstNameFromFullName(String FullName)
-    {
-        return FullName.substring(0,FullName.indexOf(' '));
+    public String getFirstNameFromFullName(String FullName) {
+        return FullName.substring(0, FullName.indexOf(' '));
     }
 
-    public String getLastNameFromFullName(String FullName)
-    {
-        return FullName.substring(FullName.indexOf(' ')+1,FullName.length());
+    public String getLastNameFromFullName(String FullName) {
+        return FullName.substring(FullName.indexOf(' ') + 1, FullName.length());
     }
 
-    public void printJSON(JSONObject json)
-    {
+    public void printJSON(JSONObject json) {
         String a = json.toString();
-        a = a.replace("{","");
-        a = a.replace(",","");
+        a = a.replace("{", "");
+        a = a.replace(",", "");
         String[] split = a.split("\"");
         for (String s :
                 split) {
-            Log.d(TAG,"JSON : " + s);
+            Log.d(TAG, "JSON : " + s);
 
         }
     }
