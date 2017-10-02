@@ -77,7 +77,7 @@ public class ChooseProfilePicture extends AppCompatActivity {
             o.inJustDecodeBounds = true;
             BitmapFactory.decodeByteArray(inter, 0, inter.length, o);
             // The new size we want to scale to
-            final int REQUIRED_SIZE = 100;
+            final int REQUIRED_SIZE = 200;
             // Find the correct scale value. It should be the power of 2.
             int scale = 1;
             while (o.outWidth / scale / 2 >= REQUIRED_SIZE &&

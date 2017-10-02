@@ -8,9 +8,9 @@
     tools:context="com.mcafeweb.ChooseProfilePicture">
 
     <com.theartofdev.edmodo.cropper.CropImageView
+        android:id="@+id/crop_image_view_choose"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/crop_image_view_choose">
-    </com.theartofdev.edmodo.cropper.CropImageView>
+        app:cropFixAspectRatio="true"></com.theartofdev.edmodo.cropper.CropImageView>
 
 </RelativeLayout>
