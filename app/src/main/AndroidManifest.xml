@@ -80,6 +80,10 @@
             android:label="Contributors I Follow" />
         <activity android:name=".ChooseProfilePicture" />
         <activity android:name=".CreateContributor"></activity>
+
+        <activity
+            android:name="com.linchaolong.android.imagepicker.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat" />
     </application>
 
 </manifest>

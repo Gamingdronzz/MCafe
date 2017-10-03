@@ -205,11 +205,14 @@ public class SignUp extends AppCompatActivity implements VolleyHelper.VolleyResp
         // your registered `FacebookCallback` won't be called
 
         if (requestCode == RC_SIGN_IN) {
+            Log.v(TAG,"Getting details from google");
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             if (result.isSuccess()) {
                 GoogleSignInAccount acct = result.getSignInAccount();
                 // Get account information
                 dbHelper.setUserEmail(acct.getEmail());
+                Log.v(TAG,"Email = " + acct.getEmail());
+
                 dbHelper.setUserFirstName(Helper.Instance.getFirstNameFromFullName(acct.getDisplayName()));
                 dbHelper.setUserLastName(Helper.Instance.getLastNameFromFullName(acct.getDisplayName()));
                 setInputFields();

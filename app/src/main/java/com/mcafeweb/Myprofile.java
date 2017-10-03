@@ -1,14 +1,23 @@
 package com.mcafeweb;
 
+
 import android.content.Context;
+
 import android.content.Intent;
+
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.os.Bundle;
+import android.graphics.Point;
+import android.net.Uri;
+
 import android.support.design.widget.FloatingActionButton;
+
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -18,19 +27,23 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+
 import android.widget.Toast;
 
 import com.android.volley.NetworkResponse;
 import com.android.volley.VolleyError;
+
 import com.mcafeweb.Models.ProfileItemModel;
 import com.mcafeweb.RecyclerViews.RecyclerViewAdapterMyProfile;
 import com.mcafeweb.utils.DBHelper;
 import com.mcafeweb.utils.Helper;
 import com.mcafeweb.utils.VolleyHelper;
 
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -48,6 +61,7 @@ public class Myprofile extends AppCompatActivity implements VolleyHelper.VolleyR
 
     ImageView myProfilePic;
     String image = null;
+    //ImagePicker imagePicker;
 
 
     final String TAG = "Myprofile";
@@ -90,12 +104,11 @@ public class Myprofile extends AppCompatActivity implements VolleyHelper.VolleyR
             }
         });
 
+
         fabChoose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Intent intent = new Intent(getApplicationContext(), ChooseProfilePicture.class);
-                startActivityForResult(intent, CHOOSE_PIC);
+                showImageChooser();
             }
         });
 
@@ -135,11 +148,76 @@ public class Myprofile extends AppCompatActivity implements VolleyHelper.VolleyR
         showProgressLayout(true);
     }
 
+    private void showImageChooser() {
+    Intent intent = new Intent(this,ChooseProfilePicture.class);
+        startActivityForResult(intent,CHOOSE_PIC);
+    }
+
+    /*
+    private void showImageChooser() {
+        imagePicker = new ImagePicker();
+        imagePicker.setTitle("Choose Profile Pic");
+        imagePicker.setCropImage(true);
+        imagePicker.startChooser(this, new ImagePicker.Callback() {
+            @Override
+            public void onPickImage(Uri imageUri) {
+                try {
+                    Log.v("Adapter", "Picked Path = " + imageUri.getPath());
+                    Bitmap bitmap = BitmapFactory.decodeFile(imageUri.getPath());
+                    image = helper.getStringFromBitmap(bitmap);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onCropImage(Uri imageUri) {
+                try {
+                    Log.v("Adapter", "Cropped Path = " + imageUri.getPath());
+                    Bitmap bitmap = BitmapFactory.decodeFile(imageUri.getPath());
+                    //simpleImage.setImage(bitmap);
+                    image = helper.getStringFromBitmap(bitmap);
+                    myProfilePic.setImageBitmap(bitmap);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                //draweeView.setImageURI(imageUri);
+                //draweeView.getHierarchy().setRoundingParams(RoundingParams.asCircle());
+            }
+
+            @Override
+            public void cropConfig(CropImage.ActivityBuilder builder) {
+                Point size = new Point();
+                Point ratio = new Point();
+
+                size.set(500, 500);
+                ratio.set(1, 1);
+                builder.setMultiTouchEnabled(true)
+                        .setGuidelines(CropImageView.Guidelines.ON)
+                        .setCropShape(CropImageView.CropShape.RECTANGLE)
+                        .setRequestedSize(size.x, size.y)
+                        .setAspectRatio(ratio.x, ratio.y);
+            }
+        });
+    }
+    */
 
     /**
      * Crop the image and set it back to the  cropping view.
      */
 
+    /*
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Log.d("Adapter", "Request Code  " + requestCode);
+        try {
+            imagePicker.onActivityResult(this, requestCode, resultCode, data);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    */
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -150,6 +228,7 @@ public class Myprofile extends AppCompatActivity implements VolleyHelper.VolleyR
             }
         }
     }
+
 
     private void setupDatabase() {
         dbHelper = new DBHelper(this);
@@ -341,7 +420,7 @@ public class Myprofile extends AppCompatActivity implements VolleyHelper.VolleyR
                 addprofileItem("Role", role);
 
                 image = json.getString("profile_profile_pic");
-                if (image.equals("") || image == null) {
+                if (image == null || image.equals("")) {
                     myProfilePic.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.mipmap.app_launcher));
                 } else {
                     myProfilePic.setImageBitmap(helper.getBitmapFromString(image));
