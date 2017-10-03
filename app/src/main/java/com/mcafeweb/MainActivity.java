@@ -624,7 +624,7 @@ public class MainActivity extends AppCompatActivity implements VolleyHelper.Voll
                     model.setBlogViews(blog_Views);
                     model.setBlogSharedDate(blog_shared_date);
                     model.setBlogBrief(blogBrief);
-                    model.setBlogImage(helper.getBitmapFromString(blogImage));
+                    model.setBlogImage(helper.getBitmapFromString(blogImage,"blog model " + blog_ID));
                     model.setCanonicalURL(blogCanonicalLink);
                     model.setSharerName(sharerName);
 

@@ -139,10 +139,11 @@ public class MemberProfile extends AppCompatActivity implements VolleyHelper.Vol
                     String city = json.getString("profile_city");
                     String country = json.getString("profile_country");
 
-                    if (image == null || image.length() == 0) {
+                    if (image == null || image.equals("")) {
                         Log.d(TAG, "No profile picture");
                     } else {
-                        memberProfilePic.setImageBitmap(helper.getBitmapFromString(image));
+                        Log.d(TAG, "Setting memeber profile picture");
+                        memberProfilePic.setImageBitmap(helper.getBitmapFromString(image,"user " + userid));
                     }
 
 

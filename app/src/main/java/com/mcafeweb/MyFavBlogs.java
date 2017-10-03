@@ -206,7 +206,7 @@ public class MyFavBlogs extends AppCompatActivity implements VolleyHelper.Volley
                     model.setBlogViews(blog_Views);
                     model.setBlogSharedDate(blog_shared_date);
                     model.setBlogBrief(blogBrief);
-                    model.setBlogImage(helper.getBitmapFromString(blogImage));
+                    model.setBlogImage(helper.getBitmapFromString(blogImage,"my fav blog " + blog_ID));
                     model.setCanonicalURL(blogCanonicalLink);
                     model.setSharerName(json.getString("name"));
                     favBlogModelList.add(model);

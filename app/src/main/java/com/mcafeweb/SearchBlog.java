@@ -259,7 +259,7 @@ public class SearchBlog extends AppCompatActivity implements VolleyHelper.Volley
                      model.setBlogSharedDate(blog_shared_date);
                      model.setBlogBrief(blogBrief);
                      model.setSharerName(SharerName);
-                     model.setBlogImage(helper.getBitmapFromString(blogImage));
+                     model.setBlogImage(helper.getBitmapFromString(blogImage,"search blog = " + blog_ID));
                      model.setCanonicalURL(blogCanonicalLink);
 
                     blogModelList.add(model);

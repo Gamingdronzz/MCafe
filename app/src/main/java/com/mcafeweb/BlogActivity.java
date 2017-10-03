@@ -68,8 +68,9 @@ public class BlogActivity extends AppCompatActivity implements VolleyHelper.Voll
         blogModel.setTitle(bundle.getString("title"));
         blogModel.setBlogBrief(bundle.getString("brief"));
         blogModel.setBlogUrl(bundle.getString("url"));
-        blogModel.setBlogImage(helper.getBitmapFromString(bundle.getString("image")));
+
         blogModel.setBlogID(bundle.getInt("blogid"));
+        blogModel.setBlogImage(helper.getBitmapFromString(bundle.getString("image"),"blog model " + blogModel.getBlogID()));
         blogModel.setBlogCategory(bundle.getInt("category"));
         blogModel.setBlogSharedDate(bundle.getString("date"));
         blogModel.setBlogSharedByUser(bundle.getInt("contributorid"));

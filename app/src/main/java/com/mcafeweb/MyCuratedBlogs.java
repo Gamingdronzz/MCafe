@@ -218,7 +218,7 @@ public class MyCuratedBlogs extends AppCompatActivity implements VolleyHelper.Vo
                     model.setBlogViews(blog_Views);
                     model.setBlogSharedDate(blog_shared_date);
                     model.setBlogBrief(blogBrief);
-                    model.setBlogImage(helper.getBitmapFromString(blogImage));
+                    model.setBlogImage(helper.getBitmapFromString(blogImage,"my blog " + blog_ID));
                     model.setCanonicalURL(blogCanonicalLink);
                     model.setSharerName(json.getString("name"));
                     myCuratedBlogModelList.add(model);

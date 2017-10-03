@@ -147,7 +147,7 @@ public class VolleyHelper {
                 }
             };
             strReq.setRetryPolicy(new DefaultRetryPolicy(MY_TIMEOUT, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-            Log.d(TAG,"Request = " + strReq);
+            Log.d(TAG,"Request = " + strReq+params.toString());
             AppController.getInstance().addToRequestQueue(strReq, TAG);
         }
     }

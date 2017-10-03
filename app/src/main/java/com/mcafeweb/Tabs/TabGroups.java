@@ -260,7 +260,7 @@ public class TabGroups extends Fragment implements VolleyHelper.VolleyResponse {
 
                     GroupModel model = new GroupModel();
 
-                    model.setGroup_Image(helper.getBitmapFromString(groupImage));
+                    model.setGroup_Image(helper.getBitmapFromString(groupImage,"group"));
                     model.setGroupID(group_ID);
                     model.setGroupTitle(groupName);
                     model.setGroupMembers(groupMembers);

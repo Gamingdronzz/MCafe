@@ -238,10 +238,10 @@ public class Helper {
         }
     }
 
-    public Bitmap getBitmapFromString(String value) {
+    public Bitmap getBitmapFromString(String value,String which) {
         byte[] inter = Base64.decode(value, Base64.DEFAULT);
-        Log.d(TAG, "Byte Array = " + inter.toString());
-        return BitmapFactory.decodeByteArray(inter, 0, inter.length);
+        Log.d(TAG, which + " Byte Array = " + inter.toString());
+        return BitmapFactory.decodeByteArray(inter,0, inter.length);
     }
 
     /*

@@ -224,7 +224,7 @@ public class Myprofile extends AppCompatActivity implements VolleyHelper.VolleyR
         if (requestCode == CHOOSE_PIC) {
             if (resultCode == RESULT_OK) {
                 image = data.getStringExtra("image");
-                myProfilePic.setImageBitmap(helper.getBitmapFromString(image));
+                myProfilePic.setImageBitmap(helper.getBitmapFromString(image," my profile "));
             }
         }
     }
@@ -423,7 +423,7 @@ public class Myprofile extends AppCompatActivity implements VolleyHelper.VolleyR
                 if (image == null || image.equals("")) {
                     myProfilePic.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.mipmap.app_launcher));
                 } else {
-                    myProfilePic.setImageBitmap(helper.getBitmapFromString(image));
+                    myProfilePic.setImageBitmap(helper.getBitmapFromString(image,"my profile pic"));
                 }
             } else if (json.getString(helper.ACTION).toLowerCase().equals("trying to update my profile")) {
                 if (json.getString("update_my_profile_result").equals(helper.SUCCESS)) {
