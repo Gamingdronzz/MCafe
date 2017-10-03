@@ -1,8 +1,8 @@
 package com.mcafeweb;
 
 import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -15,7 +15,6 @@ import android.widget.Toast;
 
 import com.android.volley.NetworkResponse;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.HttpHeaderParser;
 import com.mcafeweb.Models.ProfileItemModel;
 import com.mcafeweb.RecyclerViews.RecyclerViewAdapterMemberProfile;
 import com.mcafeweb.utils.Helper;
@@ -25,7 +24,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -64,7 +62,7 @@ public class MemberProfile extends AppCompatActivity implements VolleyHelper.Vol
         userid = getIntent().getIntExtra("userid", -1);
         getSupportActionBar().setTitle("");
         helper = new Helper(this);
-        volleyHelper = new VolleyHelper(this,this);
+        volleyHelper = new VolleyHelper(this, this);
         profileItemModelList = new ArrayList<>();
 
         setUpRecyclerView();
@@ -89,8 +87,8 @@ public class MemberProfile extends AppCompatActivity implements VolleyHelper.Vol
         String url = helper.baseURL + "getProfile.php5";
         Map<String, String> params = new HashMap<String, String>();
         params.put("userid", userid + "");
-        if(volleyHelper.countRequestsInFlight("Get_Profile_"+userid)==0)
-            volleyHelper.makeStringRequest(url, "Get_Profile_"+userid, params);
+        if (volleyHelper.countRequestsInFlight("Get_Profile_" + userid) == 0)
+            volleyHelper.makeStringRequest(url, "Get_Profile_" + userid, params);
     }
 
     void addprofileItem(String itemname, String value) {
@@ -141,15 +139,11 @@ public class MemberProfile extends AppCompatActivity implements VolleyHelper.Vol
                     String city = json.getString("profile_city");
                     String country = json.getString("profile_country");
 
-                    if(image == null || image.length()==0)
-                    {
-                        Log.d(TAG,"No profile picture");
-                    }
-                    else
-                    {
+                    if (image == null || image.length() == 0) {
+                        Log.d(TAG, "No profile picture");
+                    } else {
                         memberProfilePic.setImageBitmap(helper.getBitmapFromString(image));
                     }
-
 
 
                     addprofileItem("First Name", first_name);
@@ -179,17 +173,16 @@ public class MemberProfile extends AppCompatActivity implements VolleyHelper.Vol
                         addprofileItem("Certifications and Qualifications", certifications);
 
                         int followers = json.getInt("followers");
-                        addprofileItem("Followers",followers+"");
+                        addprofileItem("Followers", followers + "");
 
                     }
 
-                    addprofileItem("Role",role);
+                    addprofileItem("Role", role);
                 }
             } catch (JSONException jse) {
                 Toast.makeText(getApplicationContext(), "Unable to Get Profile\nPlease Try again after some time", Toast.LENGTH_LONG).show();
                 finish();
-            }
-            finally {
+            } finally {
                 showProgressLayout(false);
             }
         }
