@@ -4,8 +4,8 @@
     <corners android:radius="256dp" />
     <solid android:color="@color/colorAccent" />
     <stroke
-        android:width="3dip"
-        android:color="@color/colorAccent" />
+        android:width="2dp"
+        android:color="@color/colorBlack" />
     <padding
         android:bottom="4dp"
         android:left="4dp"

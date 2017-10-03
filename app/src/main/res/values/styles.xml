@@ -18,5 +18,14 @@
     </style>
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="AppTheme.MyAlertDialog" parent="Base.Theme.AppCompat.Light.Dialog.Alert">
+
+            <!-- Used for the buttons -->
+            <item name="colorAccent">@color/colorAccent</item>
+            <!-- Used for the title and text -->
+            <item name="android:textColorPrimary">@color/colorWhite</item>
+            <!-- Used for the background -->
+            <item name="android:background">#333333</item>
+    </style>
 
 </resources>

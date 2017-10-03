@@ -273,7 +273,7 @@ public class MainActivity extends AppCompatActivity implements VolleyHelper.Voll
     private void doExit() {
 
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(
-                MainActivity.this);
+                MainActivity.this,R.style.AppTheme_MyAlertDialog);
 
         alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 
@@ -284,7 +284,6 @@ public class MainActivity extends AppCompatActivity implements VolleyHelper.Voll
         });
 
         alertDialog.setNegativeButton("No", null);
-
         alertDialog.setMessage("Do you want to exit?");
         alertDialog.setTitle("Mcafe");
         alertDialog.show();

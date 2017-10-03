@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/colorLightGray"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorLightGray"
+    android:orientation="vertical"
     tools:context=".Myprofile">
 
     <LinearLayout
+        android:id="@+id/main_layout_my_profile"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:id="@+id/mail_layout_my_profile">
+        android:orientation="vertical">
+
 
         <android.support.v7.widget.CardView
             android:layout_width="200dp"
             android:layout_height="200dp"
             android:layout_above="@+id/recycler_view_profile"
-            android:background="@color/colorWhite"
             android:layout_gravity="center_horizontal"
-            android:padding="10dp"
-            app:cardElevation="10dp">
+            android:background="@color/colorWhite">
 
-            <FrameLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"
@@ -32,24 +32,30 @@
                     android:id="@+id/my_profile_Profile_Picture"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_centerInParent="true" />
+                    android:layout_gravity="center" />
 
-                <android.support.design.widget.FloatingActionButton
-                    android:layout_margin="5dp"
+                <ImageButton
                     android:id="@+id/fab_remove_photo"
-                    android:src="@drawable/cut"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom|left"/>
-
-                <android.support.design.widget.FloatingActionButton
+                    android:layout_width="40dp"
+                    android:scaleType="center"
+                    android:background="@drawable/circular_border_imageview"
+                    android:layout_height="40dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentLeft="true"
                     android:layout_margin="5dp"
-                    android:src="@drawable/camera"
+                    android:src="@drawable/ic_action_cut" />
+
+                <ImageButton
                     android:id="@+id/fab_choose_photo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom|right"/>
-            </FrameLayout>
+                    android:layout_width="40dp"
+                    android:scaleType="center"
+                    android:background="@drawable/circular_border_imageview"
+                    android:layout_height="40dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_margin="5dp"
+                    android:src="@drawable/ic_action_camera" />
+            </RelativeLayout>
 
 
         </android.support.v7.widget.CardView>
@@ -91,20 +97,23 @@
                     android:textColor="@color/colorWhite" />
             </LinearLayout>
         </android.support.v4.widget.NestedScrollView>
+
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/progress_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:gravity="center"
-        android:id="@+id/progress_layout">
+        android:orientation="vertical">
 
-        <include layout="@layout/crystal_progress_bar"
+        <include
+            layout="@layout/crystal_progress_bar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
         </include>
+
         <android.support.v4.widget.Space
             android:layout_width="match_parent"
             android:layout_height="@dimen/padding_large" />
@@ -113,11 +122,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
+            android:text="Please Wait...."
             android:textSize="15dp"
-            android:text="Please Wait...."/>
+            android:textStyle="bold" />
 
 
     </LinearLayout>
 
-</FrameLayout>
+</RelativeLayout>

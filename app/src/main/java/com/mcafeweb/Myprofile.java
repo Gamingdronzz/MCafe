@@ -6,12 +6,9 @@ import android.content.Context;
 import android.content.Intent;
 
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Point;
-import android.net.Uri;
 
-import android.support.design.widget.FloatingActionButton;
+import android.graphics.BitmapFactory;
+
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -25,6 +22,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -66,8 +64,7 @@ public class Myprofile extends AppCompatActivity implements VolleyHelper.VolleyR
 
     final String TAG = "Myprofile";
 
-    FloatingActionButton fabRemove;
-    FloatingActionButton fabChoose;
+    ImageButton fabRemove,fabChoose;
 
     int profileItemCounter = 0;
 
@@ -79,7 +76,7 @@ public class Myprofile extends AppCompatActivity implements VolleyHelper.VolleyR
     Helper helper;
     VolleyHelper volleyHelper;
 
-    LinearLayout CreateBlogLayout;
+    LinearLayout mainLayout;
     LinearLayout progressLayout;
 
 
@@ -90,10 +87,10 @@ public class Myprofile extends AppCompatActivity implements VolleyHelper.VolleyR
         setupDatabase();
 
         getSupportActionBar().setTitle(dbHelper.getUserFirstName() + " " + dbHelper.getUserLastName());
-        CreateBlogLayout = (LinearLayout) findViewById(R.id.mail_layout_my_profile);
+        mainLayout = (LinearLayout) findViewById(R.id.main_layout_my_profile);
         progressLayout = (LinearLayout) findViewById(R.id.progress_layout);
-        fabChoose = (FloatingActionButton) findViewById(R.id.fab_choose_photo);
-        fabRemove = (FloatingActionButton) findViewById(R.id.fab_remove_photo);
+        fabChoose = (ImageButton) findViewById(R.id.fab_choose_photo);
+        fabRemove = (ImageButton) findViewById(R.id.fab_remove_photo);
         myProfilePic = (ImageView) findViewById(R.id.my_profile_Profile_Picture);
         contributorsIFollow = (Button) findViewById(R.id.button_contributors_i_follow);
         contributorsIFollow.setOnClickListener(new View.OnClickListener() {
@@ -355,10 +352,10 @@ public class Myprofile extends AppCompatActivity implements VolleyHelper.VolleyR
 
     public void showProgressLayout(boolean value) {
         if (value) {
-            CreateBlogLayout.setVisibility(View.INVISIBLE);
+            mainLayout.setVisibility(View.INVISIBLE);
             progressLayout.setVisibility(View.VISIBLE);
         } else {
-            CreateBlogLayout.setVisibility(View.VISIBLE);
+            mainLayout.setVisibility(View.VISIBLE);
             progressLayout.setVisibility(View.INVISIBLE);
         }
 
